@@ -7,9 +7,6 @@ import java.util.Arrays;
  */
 public class SequenceList<E> implements Serializable{
 
-    public static void main(String[] args) {
-        System.out.println ("Everything Normal");
-    }
     /**
      * 定义一个顺序结构的允许的最大容量，这里参考了jdk源码的方法，官方文档解释说
      * Object[]的最大容量一般收到VMs的限制，推荐设置为Integer.MAX_VALUE-8
@@ -134,6 +131,36 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
+     * 删除指定索引位置的列表中的元素
+     * @param index 要删除的元素的索引
+     * @return boolean
+     */
+    public boolean deleteByIndex(int index){
+        checkRange ( index );
+
+        for(int k=index;k<=currentSize;k++){
+            elementData[k-1] = elementData[k];
+        }
+        currentSize--;
+        return true;
+    }
+
+    /**
+     * 删除指定索引位置的列表中的元素
+     * @param e 要删除的元素
+     * @return boolean
+     */
+    public boolean deleteByElement(E e){
+        int index = indexOf ( e );
+
+        for(int k=index;k<=currentSize;k++){
+            elementData[k-1] = elementData[k];
+        }
+        currentSize--;
+        return true;
+    }
+
+    /**
      * 删除指定索引位置的ArraList里的元素
      * @param index 要删除的元素的索引
      * @return boolean
@@ -142,7 +169,7 @@ public class SequenceList<E> implements Serializable{
         checkRange(index);
 
         elementData[index]=null;
-        currentSize++; //顺序表长度减一
+        currentSize--; //顺序表长度减一
         return true;
     }
 
@@ -192,12 +219,12 @@ public class SequenceList<E> implements Serializable{
         return true;
     }
 
-    /**
+/**
      * 替换指定的元素
      * @param e1 替换前的元素
      * @param e2  替换后的元素
      * @return boolean 返回true表示替换成功，返回false则相反
-     */
+ */
     public boolean replacaByElement(E e1,E e2){
         if(e1.getClass () != e2.getClass ())
             throw new ClassCastException ();
