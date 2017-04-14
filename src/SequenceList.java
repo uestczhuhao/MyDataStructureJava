@@ -80,7 +80,20 @@ public class SequenceList<E> implements Serializable{
         return this.currentSize+1;
     }
 
-
+    /**
+     * 输出顺序表的所有节点
+     */
+    public void print() {
+        if(currentSize != -1){
+            for(int i=0;i<currentSize+1;i++){
+                System.out.print (elementData[i] + " ");
+                if(i == currentSize)
+                    System.out.println ();
+            }
+        }else {
+            throw new ArrayIndexOutOfBoundsException (  );
+        }
+    }
     /**
      * 判断顺序表ArrayList是否为空
      * @return boolean

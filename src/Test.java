@@ -8,9 +8,9 @@ public class Test {
             List.add(i);
 
         }
-        List.deleteByElement ( 6 );
+        List.print (  );
 //        List.removeByElement (16 );
-        System.out.println (List.get (6 ));
+//        System.out.println (List.get (6 ));
         System.out.println("The Current Size is: "+List.getCurrentSize ());
         System.out.println(List.getSize ());
     }
