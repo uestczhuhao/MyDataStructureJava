@@ -3,15 +3,24 @@
  */
 public class Test {
     public static void main(String[] args) {
-        SequenceList List = new SequenceList();
-        for (int i=0;i<10;i++){
-            List.add(i);
+        testSingleLinkList();
+//        SequenceList List = new SequenceList();
+//        for (int i=0;i<10;i++){
+//            List.add(i);
+//
+//        }
+//        List.print (  );
+////        List.removeByElement (16 );
+////        System.out.println (List.get (6 ));
+//        System.out.println("The Current Size is: "+List.getCurrentSize ());
+//        System.out.println(List.getSize ());
+    }
+    public static void testSingleLinkList(){
+        SingleLinkList ListTest = new SingleLinkList ("ccc"  );
 
-        }
-        List.print (  );
-//        List.removeByElement (16 );
-//        System.out.println (List.get (6 ));
-        System.out.println("The Current Size is: "+List.getCurrentSize ());
-        System.out.println(List.getSize ());
+//        for (int i=0;i<3;i++)
+//            ListTest.addElement ( i );
+//        System.out.println (ListTest.getHead ());
+        ListTest.print ();
     }
 }

@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 /**
  * Created by zhuhao on 17-4-12.
+ * 顺序列表的实现
  * @version 1.0
  */
 public class SequenceList<E> implements Serializable{
@@ -13,15 +14,15 @@ public class SequenceList<E> implements Serializable{
      */
     private static final int MAX_SIZE =Integer.MAX_VALUE-8;
     /**
-     * 保存这ArrayList的大小
+     * 保存这SequenceList的大小
      */
     private static int size;
     /**
-     * 保存ArrayList的实际存储长度，其长度不一定等于初始化大小，而是实际存储了数据的长度。
+     * 保存SequenceList的实际存储长度，其长度不一定等于初始化大小，而是实际存储了数据的长度。
      */
     private int currentSize = -1;
     /**
-     * 存放ArrayList的数据的对象数组
+     * 存放SequenceList的数据的对象数组
      */
     private Object[] elementData;
 
@@ -34,7 +35,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * ArrayList初始化构造器，这个初始化方法要求使用者指定构造该ArrayList的初始化大小initCapacity.
+     * SequenceList初始化构造器，这个初始化方法要求使用者指定构造该SequenceList的初始化大小initCapacity.
      * @param initCapacity 初始化容量
      */
     public SequenceList(int initCapacity) {
@@ -44,11 +45,11 @@ public class SequenceList<E> implements Serializable{
             throw new ArrayIndexOutOfBoundsException ();
 
         this.elementData = new Object[initCapacity];//初始化数组
-        this.size = initCapacity; //同时初始化ArrayList的大小
+        this.size = initCapacity; //同时初始化SequenceList的大小
     }
 
     /**
-     * 确保所需的ArrayList容量没有超过初始化的容量
+     * 确保所需的SequenceList容量没有超过初始化的容量
      * @param requireCapacity 所需的容量
      */
     private void ensureCapacity(int requireCapacity){
@@ -65,7 +66,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 获得顺序表ArrayList的容量
+     * 获得顺序表SequenceList的容量
      * @return int
      */
     public int getSize(){
@@ -73,7 +74,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 获取顺序表ArrayList的实际存储大小
+     * 获取顺序表SequenceList的实际存储大小
      * @return int
      */
     public int getCurrentSize(){
@@ -95,7 +96,7 @@ public class SequenceList<E> implements Serializable{
         }
     }
     /**
-     * 判断顺序表ArrayList是否为空
+     * 判断顺序表SequenceList是否为空
      * @return boolean
      */
     public boolean isEmply(){
@@ -103,7 +104,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 增加泛型的支持，使每个放入ArrayList容器的元素不会丢失其数据类型
+     * 增加泛型的支持，使每个放入SequenceList容器的元素不会丢失其数据类型
      * @param index
      * @return E
      */
@@ -115,7 +116,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 往顺序表ArrayList尾部添加元素的方法。
+     * 往顺序表SequenceList尾部添加元素的方法。
      * @param e 要添加的元素
      */
     public boolean add(E e){
@@ -126,7 +127,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 往顺序表ArrayList指定位置添加元素的方法。
+     * 往顺序表SequenceList指定位置添加元素的方法。
      * @param e 要添加的元素
      * @param index 要添加到顺序表里的位置索引
      */
@@ -212,7 +213,7 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 获取指定索引位置的ArrayList里的元素
+     * 获取指定索引位置的SequenceList里的元素
      * @param index 要获取的元素的索引
      * @return E
      */
@@ -247,16 +248,16 @@ public class SequenceList<E> implements Serializable{
     }
 
     /**
-     * 搜索指定元素是否包含在ArrayList里
+     * 搜索指定元素是否包含在SequenceList里
      * @param e 要搜索元素
-     * @return boolean  返回true表示ArrayList中包含指定元素，返回false则相反。
+     * @return boolean  返回true表示SequenceList中包含指定元素，返回false则相反。
      */
     public boolean contains(Object e){
         return indexOf(e)!=-1;
     }
 
     /**
-     * 搜索指定元素在ArrayList里的索引位置
+     * 搜索指定元素在SequenceList里的索引位置
      * @param e 要搜索元素
      * @return int 返回该元素所在的索引，没有返回-1
      */
