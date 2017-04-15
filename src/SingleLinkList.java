@@ -73,13 +73,20 @@ public class SingleLinkList<E> implements Serializable{
     public void addElementAtIndex(E e,int index){
         checkRange ( index );
 
-        Node p=head.next;
-        for(int i=0;i<index;i++)
-            p = p.next;
-        Node s = null;
-        s.data=e;
-        s.next=p.next;
-        p.next=s;
+        if(index == this.size){
+            addElement ( e );
+        }
+        else {
+            Node p=head;
+            for(int i=0;i<index;i++)
+                p = p.next;
+            Node s = new Node (  );
+            s.data=e;
+            s.next=p.next;
+            p.next=s;
+            size++;
+        }
+
     }
 
     /**
@@ -106,6 +113,7 @@ public class SingleLinkList<E> implements Serializable{
     public void print(){
         if(this.size != -1){
             Node p=head;
+            System.out.println ("The Head is "+ head.next.data);
             for(int i=0;i<size+1;i++){
                 System.out.print (p.next.data+" ");
                 if (i==size)

@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Created by zhuhao on 17-4-12.
  */
@@ -18,9 +20,9 @@ public class Test {
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
 
-//        for (int i=0;i<3;i++)
-//            ListTest.addElement ( i );
-//        System.out.println (ListTest.getHead ());
+        for (int i=0;i<3;i++)
+            ListTest.addElement ( i );
+        ListTest.addElementAtIndex ( 444,0 );
         ListTest.print ();
     }
 }
