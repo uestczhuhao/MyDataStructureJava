@@ -47,6 +47,13 @@ public class SingleLinkList<E> implements Serializable{
         return this.size+1;
     }
 
+    /**
+     * 判断单链表是否为空
+     */
+    public boolean isEmpty(){
+        return size==-1;
+    }
+
 
     /**
      * 在单链表的末尾增加元素
