@@ -26,9 +26,11 @@ public class Test {
 //        SingleLinkList.Node p =ListTest.getPreNode ( 5 );
 //        System.out.println (ListTest.getDataOfNode(p));
         ListTest.print ();
-        System.out.println (ListTest.getSize ());
-        ListTest.removeElement ( 2 );
+        ListTest.clear ();
         ListTest.print ();
-        System.out.println (ListTest.getSize ());
+//        System.out.println (ListTest.getSize ());
+//        ListTest.removeElement ( 2 );
+//        ListTest.print ();
+//        System.out.println (ListTest.getSize ());
     }
 }

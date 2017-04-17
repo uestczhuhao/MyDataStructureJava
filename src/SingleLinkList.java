@@ -163,6 +163,22 @@ public class SingleLinkList<E> implements Serializable{
     }
 
     /**
+     * 清空整个单链表
+     */
+    public void clear() {
+        if(size==-1)
+            return;
+        else{
+           Node p = head;
+           for (int i=0;i<=size;i++){
+               p.next.data=null;
+               p.next=p.next.next;
+           }
+           size=-1;
+        }
+    }
+
+    /**
      * 返回某个节点的数据域的值
      * @return Object
      */
