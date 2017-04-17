@@ -61,8 +61,10 @@ public class SingleLinkList<E> implements Serializable{
      */
     public void addElement(E e){
         Node p = new Node ();
-        if (head==null){
-            head= new Node ( e,null );
+        if (isEmpty ()){
+            tail.data = e;
+            tail.next = null;
+            head.next = tail;
         }
         else {
             p.data=e;
@@ -79,20 +81,14 @@ public class SingleLinkList<E> implements Serializable{
      */
     public void addElementAtIndex(E e,int index){
         checkRange ( index );
-
-        if(index == this.size){
-            addElement ( e );
-        }
-        else {
-            Node p=head;
-            for(int i=0;i<index;i++)
-                p = p.next;
-            Node s = new Node (  );
-            s.data=e;
-            s.next=p.next;
-            p.next=s;
-            size++;
-        }
+        Node p=head;
+        for(int i=0;i<index;i++)
+            p = p.next;
+        Node s = new Node (  );
+        s.data=e;
+        s.next=p.next;
+        p.next=s;
+        size++;
 
     }
 
