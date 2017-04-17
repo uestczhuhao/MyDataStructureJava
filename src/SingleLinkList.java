@@ -90,30 +90,91 @@ public class SingleLinkList<E> implements Serializable{
     }
 
     /**
-     * 读取单链表的元素
-     * @param index
+     * 获取单链表在index位置的节点
+     * @param index 要获取元素的位置
      */
-    public Node getElement(int index){
+    public Node getNode(int index){
+        checkRange ( index );
+
         int j=0;
-        Node p;
-        p = head.next;
-        while (p.next!=null && j<index){
+        Node p = head.next;
+        while (j<index){
             p = p.next;
             j++;
-        }
-        if(p.next==null || j>index){
-            throw new ArrayIndexOutOfBoundsException();
         }
         return p;
     }
 
+    /**
+     * 获取单链表在index位置的前一个节点
+     * @param index 要获取元素的位置信息
+     * @return Node index的前一个节点
+     */
+    public Node getPreNode(int index){
+        if (index == size+1)
+            return this.tail;
+        checkRange ( index );
+
+        if(index==0)
+            return this.head;
+        else {
+            Node p=head;
+            for (int i=0;i<index;i++)
+                p=p.next;
+            return p;
+        }
+
+    }
+
+    /**
+     * 删除指定位置上的元素值
+     */
+    public void removeAtIndex(int index){
+        checkRange ( index );
+
+        if(index == size){
+            Node p = getPreNode ( size );
+            p.next = null;
+            tail = p;
+            size --;
+        }
+        else if(index == 0){
+            head.next = head.next.next;
+            size --;
+        }
+        else {
+            Node p = getNode ( index );
+            Node q = getPreNode ( index );
+            q.next = p.next;
+            size --;
+        }
+    }
+
+    /**
+     * 删除指定数据域的数据值
+     * @param e 要删除的数据域的值
+     */
+    public void removeElement(E e){
+        int index = indexOf ( e );
+        System.out.println (index);
+        checkRange ( index );
+
+        removeAtIndex ( index );
+    }
+
+    /**
+     * 返回某个节点的数据域的值
+     * @return Object
+     */
+    public Object getDataOfNode(Node p){
+        return p.data;
+    }
     /**
      * 打印输出当前单链表的所有值
      */
     public void print(){
         if(this.size != -1){
             Node p=head;
-            System.out.println ("The Head is "+ head.next.data);
             for(int i=0;i<size+1;i++){
                 System.out.print (p.next.data+" ");
                 if (i==size)
@@ -139,7 +200,7 @@ public class SingleLinkList<E> implements Serializable{
         public Node(){
 
         }
-        public Node(E data,Node next){
+        public Node(Object data,Node next){
             this.data=data;
             this.next=next;
         }
@@ -154,9 +215,9 @@ public class SingleLinkList<E> implements Serializable{
         if(e == null || e=="" ||e.equals ( null ) || e.equals ( "" ))
             return -1;
         else {
-            Node p=head;
+            Node p=head.next;
             for(int i=0;i<size+1;i++){
-                if(p.data == e)
+                if(p.data == e || p.data.equals ( e ))
                     return i;
                 p=p.next;
             }
