@@ -6,7 +6,8 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
 //        testSingleLinkList();
-        testDoubleCircularList ();
+//        testDoubleCircularList ();
+        testLinkStack ();
 //        SequenceList List = new SequenceList();
 //        for (int i=0;i<10;i++){
 //            List.add(i);
@@ -45,5 +46,18 @@ public class Test {
         ListTest.print ();
         ListTest.clear ();
         ListTest.print ();
+    }
+    public static void testLinkStack(){
+        LinkStack stack = new LinkStack ();
+        stack.print ();
+        stack.push ( 1 );
+        stack.push ( 2 );
+        stack.push ( 3 );
+        stack.pop();
+        System.out.println (stack.getStackLength ());
+        stack.pop();
+        System.out.println (stack.getStackLength ());
+        stack.pop();
+        stack.print ();
     }
 }

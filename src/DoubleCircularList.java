@@ -27,7 +27,7 @@ public class DoubleCircularList<E> implements Serializable {
      * @return int 当前列表长度
      */
     public int getSize(){
-        return this.size;
+        return this.size+1;
     }
 
     /**
