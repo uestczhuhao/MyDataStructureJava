@@ -159,7 +159,6 @@ public class SingleLinkList<E> implements Serializable{
      */
     public void removeElement(E e){
         int index = indexOf ( e );
-        System.out.println (index);
         checkRange ( index );
 
         removeAtIndex ( index );

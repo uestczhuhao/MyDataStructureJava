@@ -5,7 +5,8 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        testSingleLinkList();
+//        testSingleLinkList();
+        testDoubleCircularList ();
 //        SequenceList List = new SequenceList();
 //        for (int i=0;i<10;i++){
 //            List.add(i);
@@ -32,5 +33,17 @@ public class Test {
 //        ListTest.removeElement ( 2 );
 //        ListTest.print ();
 //        System.out.println (ListTest.getSize ());
+    }
+    public static void testDoubleCircularList(){
+        DoubleCircularList ListTest = new DoubleCircularList (  );
+        ListTest.print ();
+        ListTest.addElement ( 11 );
+        ListTest.addElement ( 111 );
+        ListTest.addElement ( 1111 );
+        ListTest.addElementAtIndex ( 2,2 );
+//        ListTest.removeElement ( 2 );
+        ListTest.print ();
+        ListTest.clear ();
+        ListTest.print ();
     }
 }
