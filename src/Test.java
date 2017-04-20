@@ -7,17 +7,8 @@ public class Test {
     public static void main(String[] args) {
 //        testSingleLinkList();
 //        testDoubleCircularList ();
-        testLinkStack ();
-//        SequenceList List = new SequenceList();
-//        for (int i=0;i<10;i++){
-//            List.add(i);
-//
-//        }
-//        List.print (  );
-////        List.removeByElement (16 );
-////        System.out.println (List.get (6 ));
-//        System.out.println("The Current Size is: "+List.getCurrentSize ());
-//        System.out.println(List.getSize ());
+//        testLinkStack ();
+        testBinaryTree ();
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -60,4 +51,19 @@ public class Test {
         stack.pop();
         stack.print ();
     }
+    public static void testBinaryTree(){
+        BinaryTree tree = new BinaryTree ();
+        String str = "ABCDEFG";
+        char[] strTest = str.toCharArray ();
+        for(int i=0;i<strTest.length;i++){
+            tree.CreateBiTree ( tree.getRoot (),strTest[i] );
+        }
+        System.out.println (tree.getSize ());
+        tree.PreOrderTraverse ( tree.getRoot () );
+        System.out.println ();
+        tree.InOrderTraverse ( tree.getRoot () );
+        System.out.println ();
+        tree.PostOrderTraverse ( tree.getRoot () );
+    }
+
 }
