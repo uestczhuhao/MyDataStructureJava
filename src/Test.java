@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -8,7 +10,11 @@ public class Test {
 //        testSingleLinkList();
 //        testDoubleCircularList ();
 //        testLinkStack ();
-        testBinaryTree ();
+//        testBinaryTree ();
+        int[][] test = {{0, 1, 2}, {2, 1}, {1}};
+        System.out.println ( Arrays.toString (test));
+        for (int i=0;i<3;i++)
+            System.out.println ( Arrays.toString (test[i]));
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -64,6 +70,11 @@ public class Test {
         tree.InOrderTraverse ( tree.getRoot () );
         System.out.println ();
         tree.PostOrderTraverse ( tree.getRoot () );
+    }
+    public static void testGraph(){
+        Graph graph = new Graph (  );
+        String[] str = {"aaa","bbb","ccc" };
+        graph.CreateMGraph ( 3,str);
     }
 
 }
