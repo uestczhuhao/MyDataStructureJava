@@ -11,10 +11,7 @@ public class Test {
 //        testDoubleCircularList ();
 //        testLinkStack ();
 //        testBinaryTree ();
-        int[][] test = {{0, 1, 2}, {2, 1}, {1}};
-        System.out.println ( Arrays.toString (test));
-        for (int i=0;i<3;i++)
-            System.out.println ( Arrays.toString (test[i]));
+        testWGraph ();
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -74,7 +71,26 @@ public class Test {
     public static void testGraph(){
         Graph graph = new Graph (  );
         String[] str = {"aaa","bbb","ccc" };
-        graph.CreateMGraph ( 3,str);
+        graph.createMGraph ( 3,str);
+    }
+    public static void testWGraph(){
+        WGraph wgraph = new WGraph (  );
+        createWGraph ( wgraph );
+        wgraph.print ();
+
+    }
+
+    private static void createWGraph(WGraph wgraph){
+
+        String[] str = {"V0","V1","V2","V3","V4"};
+        wgraph.createMGraph ( 5,str );
+        //增加无向图的边
+        wgraph.createEdges ( 1,0,9 );
+        wgraph.createEdges ( 1,2,3 );
+        wgraph.createEdges ( 2,0,2 );
+        wgraph.createEdges ( 2,3,5 );
+        wgraph.createEdges ( 3,4,1 );
+        wgraph.createEdges ( 0,4,6 );
     }
 
 }
