@@ -11,10 +11,6 @@ public class Graph {
      */
     private final int MAX_VERTEX = 100;
 
-//    /**
-//     * 代表无穷大，即两个顶点之间没有边，在边有权值时用
-//     */
-//    private final int INFINITY = 65535;
 
     /**
      * 邻接矩阵
@@ -44,7 +40,7 @@ public class Graph {
         adjacency = new int[n][n];
         vertex = new Object[n];
         this.numEdges =0;
-        this.numVertexs =0;
+        this.numVertexs =n;
     }
 
     /**
@@ -72,6 +68,7 @@ public class Graph {
     public void createEdges(int start,int end){
         adjacency[start][end] =1;
         adjacency[end][start] =1;
+        numEdges++;
     }
 
     /**
@@ -82,6 +79,8 @@ public class Graph {
      */
     public void createEdgesDir(int start,int end,int weight){
         adjacency[start][end] = 1;
+        numEdges++;
+
     }
 
     /**

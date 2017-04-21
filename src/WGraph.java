@@ -46,7 +46,7 @@ public class WGraph {
         adjacency = new int[n][n];
         vertex = new Object[n];
         numEdges = 0;
-        numVertexs = 0;
+        numVertexs = n;
     }
 
     /**
@@ -94,6 +94,7 @@ public class WGraph {
     public void createEdges(int start,int end,int weight){
         adjacency[start][end] =weight;
         adjacency[end][start] =weight;
+        numEdges+=2;
     }
 
     /**
@@ -104,6 +105,7 @@ public class WGraph {
      */
     public void createEdgesDir(int start,int end,int weight){
         adjacency[start][end] =weight;
+        numEdges++;
     }
 
     /**

@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +12,8 @@ public class Test {
 //        testDoubleCircularList ();
 //        testLinkStack ();
 //        testBinaryTree ();
-        testWGraph ();
+//        testWGraph ();
+        testALGraph ();
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -91,6 +93,37 @@ public class Test {
         wgraph.createEdges ( 2,3,5 );
         wgraph.createEdges ( 3,4,1 );
         wgraph.createEdges ( 0,4,6 );
+    }
+
+    public static void testALGraph(){
+        ALGraph graph = new ALGraph (  );
+//        createALGraph ( graph );
+//        graph.print ();
+
+        createALGraphDir ( graph );
+        graph.print ();
+    }
+
+    private static void createALGraph(ALGraph graph){
+        String[] str = {"V0","V1","V2","V3"};
+        graph.createVertexs ( 4,str );
+        //无向图增加边
+        graph.createEdges ( 0,1,1 );
+        graph.createEdges ( 0,2,1 );
+        graph.createEdges ( 0,3,1 );
+        graph.createEdges ( 1,2,1 );
+        graph.createEdges ( 2,3,1 );
+    }
+
+    private static void createALGraphDir(ALGraph graph){
+        String[] str = {"V0","V1","V2","V3"};
+        graph.createVertexs ( 4,str );
+        //无向图增加边
+        graph.createEdgesDir ( 1,0,1 );
+        graph.createEdgesDir ( 1,2,1 );
+        graph.createEdgesDir ( 2,1,1 );
+        graph.createEdgesDir ( 2,0,1 );
+        graph.createEdgesDir ( 0,3,1 );
     }
 
 }
