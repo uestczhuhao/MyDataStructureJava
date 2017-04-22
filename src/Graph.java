@@ -116,13 +116,27 @@ public class Graph {
     int count = 0;//起计数的作用，最后一个"->"不输出
     public void dfsTraverse(int vert){
         if(visited == null){
+            //visited==null代表图刚刚被初始化，因此需要初始化visited数组
             visited = new boolean[numVertexs];
             count=0;
         }
+        if (count == 0){
+            // count==0 代表第一次进入此函数，此时要初始化visited数组，所有的点都没有遍历过
+            visited = new boolean[numVertexs];
+        }
+//        System.out.println (Arrays.toString ( visited ));
        visited[vert]=true;
         System.out.print (vertex[vert]);
         if ( count != numVertexs-1)
             System.out.print ("->");
+        else {
+            /*当所有的结点遍历完成后，需要把数据还原
+            * 包括把count置为0,输出换行符，
+            * 而且马上返回，否则就会执行count++，与设计不符 */
+            System.out.println ();
+            count = 0;
+            return;
+        }
         count++;
         for(int j=0;j<numVertexs;j++){
             if (adjacency[vert][j] == 1 && !visited[j]){
@@ -137,6 +151,43 @@ public class Graph {
      * @param vert 遍历起点
      */
     public void bfsTranverse(int vert){
+        checkRange ( vert );
+
+        Queue queue = new Queue ();
+        int i,j;
+        int count =0;
+        visited = new boolean[numVertexs];
+        for(i=vert;i<numVertexs;i++){
+            if(!visited[i]){
+                visited[i] =true;
+                System.out.print (vertex[i]);
+                if (count != numVertexs-1)
+                    System.out.print ("->");
+                else System.out.println ();
+                count++;
+
+                queue.enQueue ( i );
+                while (!queue.isEmpty ()){
+                    i = (Integer)queue.deQueue ();
+
+                    for(j=0;j<numVertexs;j++){
+                        if(adjacency[i][j] == 1 && !visited[j]){
+                            visited[j]=true;
+                            System.out.print (vertex[j]);
+                            if (count!=numVertexs-1)
+                                System.out.print ("->");
+                            else System.out.println ();
+                            count++;
+                            queue.enQueue ( j );
+                        }
+                    }
+                }
+            }
+        }
+        //遍历完成后，恢复visited数组的初始化，即全是false
+        for(i=0;i<numVertexs;i++){
+            visited[i] = false;
+        }
 
     }
 }

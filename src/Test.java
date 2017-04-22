@@ -12,10 +12,10 @@ public class Test {
 //        testDoubleCircularList ();
 //        testLinkStack ();
 //        testBinaryTree ();
-//        testGraph ();
+        testGraph ();
 //        testWGraph ();
 //        testALGraph ();
-        testQueue ();
+//        testQueue ();
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -88,7 +88,10 @@ public class Test {
         Graph graph = new Graph (  );
         createGraph ( graph );
         graph.print ();
-        graph.dfsTraverse ( 3 );
+//        graph.dfsTraverse ( 3 );
+        graph.bfsTranverse ( 0 );
+        graph.bfsTranverse ( 2 );
+        graph.bfsTranverse ( 3 );
     }
     public static void testWGraph(){
         WGraph wgraph = new WGraph (  );
