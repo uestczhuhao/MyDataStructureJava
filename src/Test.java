@@ -12,9 +12,9 @@ public class Test {
 //        testDoubleCircularList ();
 //        testLinkStack ();
 //        testBinaryTree ();
-        testGraph ();
+//        testGraph ();
 //        testWGraph ();
-//        testALGraph ();
+        testALGraph ();
 //        testQueue ();
     }
     public static void testSingleLinkList(){
@@ -124,11 +124,15 @@ public class Test {
 
     public static void testALGraph(){
         ALGraph graph = new ALGraph (  );
-//        createALGraph ( graph );
+        createALGraph ( graph );
 //        graph.print ();
+        graph.bfs ( 0 );
+//        graph.bfs ( 1 );
+//        graph.bfs ( 2 );
+//        graph.bfs ( 3 );
 
-        createALGraphDir ( graph );
-        graph.print ();
+//        createALGraphDir ( graph );
+//        graph.print ();
     }
 
     private static void createALGraph(ALGraph graph){

@@ -4,6 +4,7 @@ import java.util.Arrays;
 /**
  * Created by zhuhao on 17-4-21.
  * 带权值的图的实现
+ * 以邻接矩阵的形式实现图
  * 图的有向无向的通过调用createEdges或者createEdgesDir来区分
  */
 public class WGraph {

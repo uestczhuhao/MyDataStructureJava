@@ -115,6 +115,8 @@ public class Graph {
      */
     int count = 0;//起计数的作用，最后一个"->"不输出
     public void dfsTraverse(int vert){
+        checkRange ( vert );
+
         if(visited == null){
             //visited==null代表图刚刚被初始化，因此需要初始化visited数组
             visited = new boolean[numVertexs];
