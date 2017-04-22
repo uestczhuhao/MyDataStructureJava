@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -29,6 +30,11 @@ public class Graph {
      * 当前的边数
      */
     private int numEdges;
+
+    /**
+     * 记录顶点是否已经被访问过的数组
+     */
+    private boolean[] visited;
 
     /**
      * 初始化构造函数
@@ -100,5 +106,37 @@ public class Graph {
     private void checkRange(int n){
         if(n<0 || n>MAX_VERTEX)
             throw new ArrayIndexOutOfBoundsException (  );
+    }
+
+
+    /**
+     * dfs方法遍历图
+     * @param vert 遍历起点
+     */
+    int count = 0;//起计数的作用，最后一个"->"不输出
+    public void dfsTraverse(int vert){
+        if(visited == null){
+            visited = new boolean[numVertexs];
+            count=0;
+        }
+       visited[vert]=true;
+        System.out.print (vertex[vert]);
+        if ( count != numVertexs-1)
+            System.out.print ("->");
+        count++;
+        for(int j=0;j<numVertexs;j++){
+            if (adjacency[vert][j] == 1 && !visited[j]){
+               dfsTraverse (j);
+            }
+        }
+    }
+
+
+    /**
+     * bfs方法遍历图
+     * @param vert 遍历起点
+     */
+    public void bfsTranverse(int vert){
+
     }
 }

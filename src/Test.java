@@ -12,8 +12,10 @@ public class Test {
 //        testDoubleCircularList ();
 //        testLinkStack ();
 //        testBinaryTree ();
+//        testGraph ();
 //        testWGraph ();
-        testALGraph ();
+//        testALGraph ();
+        testQueue ();
     }
     public static void testSingleLinkList(){
         SingleLinkList ListTest = new SingleLinkList ("ccc"  );
@@ -42,6 +44,18 @@ public class Test {
         ListTest.print ();
         ListTest.clear ();
         ListTest.print ();
+    }
+    public static void testQueue(){
+        Queue queue = new Queue ();
+        queue.enQueue ( "aaa" );
+        queue.enQueue ( 123 );
+        queue.enQueue ( 'q' );
+        queue.enQueue ( 'b' );
+        queue.enQueue ( 1222312 );
+        System.out.println (queue.deQueue ());
+        System.out.println (queue.deQueue ());
+        System.out.println (queue.deQueue ());
+        queue.print ();
     }
     public static void testLinkStack(){
         LinkStack stack = new LinkStack ();
@@ -72,8 +86,9 @@ public class Test {
     }
     public static void testGraph(){
         Graph graph = new Graph (  );
-        String[] str = {"aaa","bbb","ccc" };
-        graph.createMGraph ( 3,str);
+        createGraph ( graph );
+        graph.print ();
+        graph.dfsTraverse ( 3 );
     }
     public static void testWGraph(){
         WGraph wgraph = new WGraph (  );
@@ -82,6 +97,15 @@ public class Test {
 
     }
 
+    private static void createGraph(Graph graph){
+        String[] str = {"aaa","bbb","ccc","ddd" };
+        graph.createMGraph ( 4,str);
+        //增加无向图的边
+        graph.createEdges ( 1,0 );
+        graph.createEdges ( 1,2 );
+        graph.createEdges ( 2,0 );
+        graph.createEdges ( 0,3 );
+    }
     private static void createWGraph(WGraph wgraph){
 
         String[] str = {"V0","V1","V2","V3","V4"};
@@ -118,7 +142,7 @@ public class Test {
     private static void createALGraphDir(ALGraph graph){
         String[] str = {"V0","V1","V2","V3"};
         graph.createVertexs ( 4,str );
-        //无向图增加边
+        //有向图增加边
         graph.createEdgesDir ( 1,0,1 );
         graph.createEdgesDir ( 1,2,1 );
         graph.createEdgesDir ( 2,1,1 );
