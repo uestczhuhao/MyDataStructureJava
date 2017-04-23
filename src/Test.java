@@ -13,8 +13,8 @@ public class Test {
 //        testLinkStack ();
 //        testBinaryTree ();
 //        testGraph ();
-//        testWGraph ();
-        testALGraph ();
+        testWGraph ();
+//        testALGraph ();
 //        testQueue ();
     }
     public static void testSingleLinkList(){
@@ -96,8 +96,11 @@ public class Test {
     public static void testWGraph(){
         WGraph wgraph = new WGraph (  );
         createWGraph ( wgraph );
-        wgraph.print ();
-
+//        wgraph.print ();
+//        System.out.println (wgraph.getEdges ());
+        wgraph.MiniSpanTree_Prim ();
+        System.out.println ();
+        wgraph.MiniSpanTree_Kruskal ();
     }
 
     private static void createGraph(Graph graph){
@@ -111,15 +114,24 @@ public class Test {
     }
     private static void createWGraph(WGraph wgraph){
 
-        String[] str = {"V0","V1","V2","V3","V4"};
-        wgraph.createMGraph ( 5,str );
+        String[] str = {"V0","V1","V2","V3","V4","V5","V6","V7","V8"};
+        wgraph.createMGraph ( 9,str );
         //增加无向图的边
-        wgraph.createEdges ( 1,0,9 );
-        wgraph.createEdges ( 1,2,3 );
-        wgraph.createEdges ( 2,0,2 );
-        wgraph.createEdges ( 2,3,5 );
-        wgraph.createEdges ( 3,4,1 );
-        wgraph.createEdges ( 0,4,6 );
+        wgraph.createEdges ( 0,1,10 );
+        wgraph.createEdges ( 0,5,11 );
+        wgraph.createEdges ( 1,2,18 );
+        wgraph.createEdges ( 1,6,16 );
+        wgraph.createEdges ( 1,8,12 );
+        wgraph.createEdges ( 2,3,22 );
+        wgraph.createEdges ( 2,8,8 );
+        wgraph.createEdges ( 3,4,20 );
+        wgraph.createEdges ( 3,6,24 );
+        wgraph.createEdges ( 3,7,16 );
+        wgraph.createEdges ( 3,8,21 );
+        wgraph.createEdges ( 4,5,26 );
+        wgraph.createEdges ( 4,7,7 );
+        wgraph.createEdges ( 5,6,17 );
+        wgraph.createEdges ( 6,7,19 );
     }
 
     public static void testALGraph(){
