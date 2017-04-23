@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.nio.file.Path;
 import java.util.Arrays;
 
 /**
@@ -214,6 +215,87 @@ public class WGraph {
     }
 
     /**
+     * Dijkstra算法，求图的V0顶点到其余结点V最短路径P[v]及带全长度D[v]
+     * P[v]的值为前驱顶点下标，D[v]表示V0到V的最短长度和
+     */
+
+    public void shortestPath_Dijkstra(int v0){
+        int v,w,k=0,min;
+        int[] Pathmatrix = new int[numVertexs];  //存储最短路径下标的数组
+        int[] ShortPathTable = new int[numVertexs];  //存储到个点最短路径的权值和
+        int[] _final = new int[numVertexs]; // _final[w]=1表示求得顶点V0到Vw的最短路径
+
+        for( v=0; v<numVertexs;v++){
+            _final[v] =0 ;  //全部顶点初始化为未知最短路径状态
+            ShortPathTable[v] = adjacency[v0][v]; //将与V0点有连线的顶点加上权值
+            Pathmatrix[v] = 0; //初始化路径数组Pathmatrix为0
+        }
+        ShortPathTable[v0] =0; //V0至V0路径为0
+        _final[v0] =1; //v0至v0不需求路径
+        //开始主循环，每次求得v0到某个v顶点的最短路径
+        for(v=1;v<numVertexs;v++){
+            min = INFINITY; //当前所知离v0顶点的最近距离
+            for(w=0;w<numVertexs;w++){
+                //寻找离v0最近的顶点
+                if( _final[w]==0 && ShortPathTable[w]<min){
+
+                    k =w;
+                    min = ShortPathTable[w]; //w顶点离v0顶点更近
+                }
+            }
+            _final[k] =1; //将目前找到的最近的顶点置为1
+            for(w=0;w<numVertexs;w++) { //修正当前最短路径和距离
+                //如果经过v顶点的路径比现在这条路径的长度短的话
+                if(_final[w]==0 && ((min+adjacency[k][w])<ShortPathTable[w])){
+                    //说明找到了更短路径，修改ShortPathTable[w]和Pathmatrix[w]
+                    ShortPathTable[w] = min+adjacency[k][w];
+                    Pathmatrix[w] = k;
+                }
+            }
+        }
+
+        System.out.println (Arrays.toString ( Pathmatrix ));
+        System.out.println (Arrays.toString ( ShortPathTable ));
+
+    }
+
+    /**
+     * Floyd算法，求图G中各顶点v到其余顶点w最短路径P[v][w]及带权长度D[v][w]
+     */
+    public void ShortestPath_Floyd(){
+        int v,w,k = 0;
+        int[][] Pathmatrix = new int[numVertexs][numVertexs];  //存储最短路径下标的数组
+        int[][] ShortPathTable = new int[numVertexs][numVertexs];  //存储到个点最短路径的权值和
+
+        for(v=0;v<numVertexs;++v){
+            //初始化Pathmatrix和ShortPathTable
+            for(w=0;w<numVertexs;w++){
+                ShortPathTable[v][w] = adjacency[v][w]; //ShortPathTable[v][w]值即为对应点之间的权值
+                Pathmatrix[v][w] = w; //初始化Pathmatrix
+            }
+        }
+
+        for(k=0;k<numVertexs;k++){
+            for(v=0;v<numVertexs;v++){
+                for(w=0;w<numVertexs;w++){
+                    if(ShortPathTable[v][w]>ShortPathTable[v][k]+ShortPathTable[k][w]){
+                        //如果经过下标为k顶点路径比原两点间的路径更短
+                        //将当前两点间权值设为更小的一个
+                        ShortPathTable[v][w] = ShortPathTable[v][k] + ShortPathTable[k][w];
+                        Pathmatrix[v][w] = Pathmatrix[v][k]; //路径设置经过下标为k的顶点
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i<numVertexs;i++){
+            System.out.println (Arrays.toString ( Pathmatrix[i] ));
+        }
+        for(int i=0;i<numVertexs;i++){
+            System.out.println (Arrays.toString ( ShortPathTable[i] ));
+        }
+    }
+    /**
      * 判断n的范围是否合法
      * @param n
      */
@@ -221,10 +303,10 @@ public class WGraph {
         if(n<0 || n>MAX_VERTEX)
             throw new ArrayIndexOutOfBoundsException (  );
     }
-
     /**
      * 边集类，包括起点，终点和权重
      */
+
     class Edge{
         private int start;
         private int end;

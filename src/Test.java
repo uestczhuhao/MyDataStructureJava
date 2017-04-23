@@ -98,9 +98,11 @@ public class Test {
         createWGraph ( wgraph );
 //        wgraph.print ();
 //        System.out.println (wgraph.getEdges ());
-        wgraph.MiniSpanTree_Prim ();
-        System.out.println ();
-        wgraph.MiniSpanTree_Kruskal ();
+//        wgraph.MiniSpanTree_Prim ();
+//        System.out.println ();
+//        wgraph.MiniSpanTree_Kruskal ();
+//        wgraph.shortestPath_Dijkstra ( 0 );
+        wgraph.ShortestPath_Floyd (  );
     }
 
     private static void createGraph(Graph graph){
